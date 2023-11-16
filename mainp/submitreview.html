@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Submit Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            background-color: #555;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .review-form {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Customer Dashboard - Submit Review</h1>
+    </header>
+
+    <nav>
+        <a href="projectt.html">Home</a>
+        <a href="#">Submit Review</a>
+        <a href="customerlogin.html">Logout</a>
+    </nav>
+
+    <div class="container">
+        <div class="review-form">
+            <h2>Submit_Review</h2>
+            <form action="submitrev.php" method="POST">
+                <label for="painting_name">Painting_Name:</label>
+                <input type="text" id="painting_name" name="painting_name" required>
+
+                <label for="name">Your_Name:</label>
+                <input type="text" id="name" name="your_name" required>
+
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="1">1 (Poor)</option>
+                    <option value="2">2 (Fair)</option>
+                    <option value="3">3 (Good)</option>
+                    <option value="4">4 (Very Good)</option>
+                    <option value="5">5 (Excellent)</option>
+                </select>
+
+                <label for="review">Review_Text:</label>
+                <textarea id="review" name="review" rows="4" required></textarea>
+
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Display customer's existing reviews -->
+        <div class="review-list">
+            <h3>Your Previous Reviews</h3>
+            <p>Review 1: [Review Content]</p>
+            <p>Review 2: [Review Content]</p>
+            <!-- Add more reviews as needed -->
+        </div>
+    </div>
+
+    
+</body>
+</html>

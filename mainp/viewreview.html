@@ -1,0 +1,139 @@
+<?php
+// Connect to the database (replace with your actual database credentials)
+$conn = new mysqli("localhost", "Username", "Password", "logindata");
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to retrieve reviews (replace with your actual table and column names)
+$sql = "SELECT * FROM review_details";
+$result = $conn->query($sql);
+
+// Create an array to store reviews
+$reviews = array();
+
+// Store each review in the array
+while ($row = $result->fetch_assoc()) {
+    $reviews[] = array(
+        "painting_name" => $row["Painting_Name"],
+        "your_name" => $row["Your_Name"],
+        "rating" => $row["Rating"],
+        "review_text" => $row["Review_Text"]
+    );
+}
+
+// Close the database connection
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard - View Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            background-color: #555;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .reviews-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .review-item {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .review-item p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Owner Dashboard - View Reviews</h1>
+    </header>
+
+    <nav>
+        <a href="projectt.html">Home</a>
+        <a href="submitpaint.html">Submit Painting</a>
+        <a href="#">View Reviews</a>
+        <a href="customerlogin.html">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h2>Your Painting Reviews</h2>
+
+        <ul class="reviews-list">
+            <?php foreach ($reviews as $review) : ?>
+                <li class="review-item">
+                    <h3>Painting Name: <?php echo $review["painting_name"]; ?></h3>
+                    <p>Reviewer: <?php echo $review["your_name"]; ?></p>
+                    <p>Rating: <?php echo $review["rating"]; ?></p>
+                    <p>Review: <?php echo $review["review_text"]; ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+	
+</body>
+
+</html>

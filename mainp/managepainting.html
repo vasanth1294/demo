@@ -1,0 +1,186 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "logindata";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM paint_details";
+$result = mysqli_query($conn, $sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            background-color: #555;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .painting-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .painting-item {
+            background-color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .painting-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .painting-item p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .painting-item .reviews {
+            margin-top: 15px;
+        }
+
+        .positive-review {
+            color: #4CAF50;
+        }
+
+        .negative-review {
+            color: #F44336;
+        }
+
+        .review-form {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <nav>
+        <a href="projectt.html">Home</a>
+        <a href="#">Manage Paintings</a>
+        <a href="update.html">Update Schedule</a>
+        <a href="adminlogin.html">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h2>Manage Paintings</h2>
+
+        <ul class="painting-list">
+    <?php
+    while ($row = mysqli_fetch_assoc($result)) {
+   
+        echo "paintingname : " . $row['Painting_Name'];
+		echo "<br>";
+        echo "artist : " . $row['Artist_Name'];
+		echo "<br>";
+		echo "description : " . $row['Description'];
+        echo "<br>";
+        echo "package days : " . $row['Packagedays'];
+		echo "<br>";
+		echo "price : " . $row['Price'];
+		echo "<br>";
+		echo "mode_of_transaction : " . $row['Mode_of_Transaction'];
+		echo "<br>";
+		echo "<br>";
+        echo "<br>";	
+        echo "</tr>";
+    }
+    ?>
+        </ul>
+    </div>
+
+    
+</body>
+</html>

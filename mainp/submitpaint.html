@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard - Submit Painting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            background-color: #555;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Owner Dashboard - Submit Painting</h1>
+    </header>
+
+    <nav>
+        <a href="projectt.html">Home</a>
+        <a href="#">Submit Painting</a>
+        <a href="retrieve.php">View Reviews</a>
+        <a href="customerlogin.html">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1>paint_details</h1>
+        <form action="submitpaint.php" method="POST">
+            <label for="painting_name">Painting_Name:</label>
+            <input type="text" id="painting_name" name="painting_name" required>
+
+            <label for="artist_name">Artist_Name:</label>
+            <input type="text" id="artist_name" name="artist_name" required>
+
+            <label for="description">Description:</label>
+            <textarea type="text" name="description" rows="4" required></textarea>
+
+            <label for="packagedayws">Packagedays:</label>
+            <input type="number" id="packagedays" name="packagedays" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="transaction_mode">Mode_of_Transaction:</label>
+            <input type="text" id="transaction_mode" name="transaction_mode" required>
+
+            <button type="submit">Submit Painting</button>
+        </form>
+    </div>
+
+    
+</body>
+</html>
